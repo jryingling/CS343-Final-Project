@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-top">
+      <h1>Home</h1>
+    </div>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="favorites.html">Favorites</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="pokedex.html">Pokédex</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-layout">
+    <aside class="sidebar">
+      <section class="search-section">
+        <h2>Search</h2>
+        <form class="search-form">
+          <label for="pokemon-search" class="sr-only">Search for Pokémon or game</label>
+          <input
+            type="text"
+            id="pokemon-search"
+            name="pokemon-search"
+            placeholder="Search for Pokémon or game..."
+          >
+          <button type="submit">GO</button>
+        </form>
+      </section>
+
+      <section class="suggestions-section">
+        <h2>Random Suggested Pokémon</h2>
+        <ul class="suggestions-list">
+          <li>#Filler</li>
+          <li>#Filler</li>
+          <li>#Filler</li>
+          <li>#Filler</li>
+          <li>#Filler</li>
+        </ul>
+      </section>
+    </aside>
+
+    <section class="main-content">
+      <p class="welcome-text">Welcome, Trainer.</p>
+
+      <article class="pokemon-card">
+        <h2>Pokémon of the Day</h2>
+
+        <h3 class="pokemon-name">#Filler Name</h3>
+
+        <div class="pokemon-image-placeholder">
+          <p>Pokémon Image Here</p>
+        </div>
+        <!-- Filler tip, We could make a big json list and it 
+         randomly selects a different one everytime the page loads-->
+        <h4> Tip of The Day: Rare Candies can level up your pokemon without requiring XP!</h4>
+
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p> Gotta Catch 'Em All!</p>
+  </footer>
+</body>
+</html>
