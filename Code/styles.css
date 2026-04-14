@@ -257,3 +257,7 @@ body {
   cursor: pointer;
   border: 2px dashed #aaa;
 }
+
+#randomMon {
+  max-width: 300px;
+}
