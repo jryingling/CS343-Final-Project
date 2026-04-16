@@ -55,10 +55,12 @@
       <article class="pokemon-card">
         <h2>Pokémon of the Day</h2>
 
-        <h3 class="pokemon-name">#Filler Name</h3>
+        <h3 id="pokemon-name"></h3>
 
         <div class="pokemon-image-placeholder">
-          <p>Pokémon Image Here</p>
+          <!--better way to do this?-->
+          <p id="randomMonMessage">Pokémon goes here</p>
+          <img id="randomMon">
         </div>
         <!-- Filler tip, We could make a big json list and it 
          randomly selects a different one everytime the page loads-->
@@ -71,5 +73,7 @@
   <footer class="site-footer">
     <p> Gotta Catch 'Em All!</p>
   </footer>
+
+  <script src="../scripts/homepagefetch.js"></script>
 </body>
 </html>
