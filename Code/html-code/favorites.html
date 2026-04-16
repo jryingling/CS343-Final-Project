@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Favorites - Pokémon Dashboard</title>
   <link rel="stylesheet" href="../styles.css">
+  <script src="../js-code/favorites-logic.js" defer></script> 
 </head>
 <body>
 
@@ -30,7 +31,8 @@
       <p>Click a Pokémon to view more details.</p>
     </section>
 
-    <section class="favorites-grid">
+    <section class="favorites-grid" id="favoritesSection" >
+      <button id="showSearchBtn">Add a Favorite</button>
 
       <!-- Favorite Card -->
       <article class="favorite-card">
@@ -73,6 +75,14 @@
         <p>Type:</p>
       </article>
 
+    </section>
+    <section id="searchSection" hidden>
+      <h2>Search Pokémon</h2>
+      <input id="searchInput" type="text">
+      <button id="searchBtn">Search</button>
+      <button id="cancelSearchBtn">Cancel</button>
+
+      <div id="searchResults"></div>
     </section>
   </main>
 

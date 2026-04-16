@@ -186,11 +186,11 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.favorites-grid {
+/*.favorites-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
-}
+}*/
 
 .favorite-card {
   background-color: #ffffff;
