@@ -1,0 +1,39 @@
+[
+    {
+        "tip#": 1,
+        "tip": "Rare Candies can level up your pokemon without requiring XP!"
+    },
+    {
+        "tip#": 2,
+        "tip": "Pokemon Gyms are usually based around a certain type or theme!"
+    },
+    {
+        "tip#": 3,
+        "tip": "Ground type moves cannot hit flying type pokemon!"
+    },
+    {
+        "tip#": 4,
+        "tip": "Pokemon can have multiple different types, this can give your team more coverage!"
+    },
+    {
+        "tip#": 5,
+        "tip": "Certain types of moves do less damage to other types!"
+    },
+    {
+        "tip#": 6,
+        "tip": "Certain types of moves do more damage to other types!"
+    },
+    {
+        "tip#": 7,
+        "tip": "A fire type move that hits a grass and bug type pokemon does 4x damage!"
+    },{
+        "tip#": 8,
+        "tip": "Some pokemon moves can cause statis effects!"
+    },{
+        "tip#": 9,
+        "tip": "Not all moves have a 100% hit chance!"
+    },{
+        "tip#": 10,
+        "tip": "If you can't go to the pokemon station when your pokemon is low, use a potion!"
+    }
+]
