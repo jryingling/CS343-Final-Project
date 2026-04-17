@@ -201,6 +201,10 @@ body {
   transition: transform 0.2s ease;
 }
 
+.searchPokeName {
+  padding: 2rem;
+}
+
 /* Pokedex Page */
 
 .pokedex-layout {

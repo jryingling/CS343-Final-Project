@@ -8,7 +8,8 @@ const favoritesSection = document.querySelector("#favoritesSection");
 const searchSection = document.querySelector("#searchSection");
 const searchBtn = document.querySelector("#searchBtn");
 const searchInput = document.querySelector("#searchInput");
-
+const searchresultIMG = document.querySelector("#searchresultIMG");
+const searchPokeName = document.querySelector("#searchPokeName");
 
 async function loadPokemonData() {
     const response = await fetch("../data/pokemon_dex_name.json");
@@ -18,6 +19,8 @@ async function loadPokemonData() {
 let pokeData = [];
 loadPokemonData();
 
+//For now all confirmed favorites will just be saved in this array
+let tempUserData = []
 
 // Event listeners
 addFavBtn.addEventListener("click", function () {
@@ -49,11 +52,12 @@ function handleSearch() {
     const result = pokemonData.find(function (temp) {
         return (
             temp.name.toLowerCase() === userInput ||
-            temp.id === Number(userInput)
+            temp.dex === Number(userInput)
         );
     });
 
     if (result) {
+        rendersearchResult(result.dex)
         console.log("Found:", result);
     } else {
         console.log("Not found");
@@ -66,4 +70,23 @@ function handleSearch() {
 function loadFavorites() {
     const savedFavorites = localStorage.getItem("favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
+}
+
+function rendersearchResult(pokeID) {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokeID}`)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            //need for teams page
+            //const spriteUrl = data.sprites.front_default;
+            const artUrl = data.sprites.other['official-artwork'].front_default;
+            const pokeName = data.species.name;
+            //Trying to capitalize the first letter of the pokemon
+            result = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
+            searchPokeName.textContent = result;
+            searchresultIMG.src = artUrl;
+        });
+    console.log("check 1")
+    
 }
