@@ -80,7 +80,8 @@
     <section id="searchSection" hidden>
       <h2>Search Pokémon</h2>
       <h3>Search by Pokedex Number or Name!</h3>
-      <input id="searchInput" type="text">
+      <input id="searchInput" list="pokemon-list" type="text">
+      <datalist id="pokemon-list"></datalist>
       <button id="searchBtn">Search</button>
       <button id="cancelSearchBtn">Back to Favorites</button>
 
@@ -92,5 +93,6 @@
     <p>Gotta Catch 'Em All!</p>
   </footer>
 
+  <script src="../scripts/suggestedsearch.js"></script>
 </body>
 </html>
