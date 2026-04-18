@@ -32,7 +32,9 @@
             id="pokemon-search"
             name="pokemon-search"
             placeholder="Search for Pokémon or game..."
+            list="pokemon-list"
           >
+          <datalist id="pokemon-list"></datalist>
           <button type="submit">GO</button>
         </form>
       </section>
@@ -62,7 +64,7 @@
           <p id="randomMonMessage">Pokémon goes here</p>
           <img id="randomMon">
         </div>
-        <!-- Filler tip, We could make a big json list and it 
+        <!-- Filler tip, We could make a big json list  and it 
          randomly selects a different one everytime the page loads-->
         <h4> Tip of The Day: Rare Candies can level up your pokemon without requiring XP!</h4>
 
@@ -74,6 +76,8 @@
     <p> Gotta Catch 'Em All!</p>
   </footer>
 
-  <script src="../scripts/homepagefetch.js"></script>
+  <script src="../scripts/util.js"></script>
+  <script src="../scripts/nav.js"></script>
+  <script src="../scripts/index.js" defer></script>
 </body>
 </html>
