@@ -4,40 +4,30 @@
   const pokedexid = Math.floor(Math.random() * maxid) + 1;
 
   queryPokeAPI(pokedexid)
-    .then(data => processJSON(data))
-    .then(clean => renderCard(clean));
+    .then((data) => processJSON(data))
+    .then((clean) => renderCard(clean));
 })();
 
 function validateSearch() {
-    const pokeSearch = document.getElementById('pokemon-search').value.trim();
-    const match = pokemon.find(p => p.name.toLowerCase() === pokeSearch.toLowerCase());
-  
-    if (!match) {
-        console.log("no match man")
-        return Promise.reject('Invalid pokemon name.');
-    } else {
-        return Promise.resolve([match.name]);
-    }
+  const pokeSearch = document.getElementById("pokemon-search").value.trim();
+  const match = pokemon.find(
+    (p) => p.name.toLowerCase() === pokeSearch.toLowerCase(),
+  );
+
+  if (!match) {
+    console.log("no match man");
+    return Promise.reject("Invalid pokemon name.");
+  } else {
+    return Promise.resolve([match.name]);
+  }
 }
 
-// search navigate to pokedex page
-document.querySelector('.search-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    validateSearch()
-        .then(name => goToPokemon(name[0]))
-        .catch(err => {
-            console.log(err);
-        });
-});
-
-
 function renderCard(clean) {
-  const randomMonMessage = document.getElementById('randomMonMessage');
-  const randomMon = document.getElementById('randomMon');
-  const randomMonName = document.getElementById('pokemon-name');
+  const randomMonMessage = document.getElementById("randomMonMessage");
+  const randomMon = document.getElementById("randomMon");
+  const randomMonName = document.getElementById("pokemon-name");
 
   randomMonName.textContent = clean.name;
   randomMon.src = clean.officialArt;
-  randomMonMessage.textContent = '';
+  randomMonMessage.textContent = "";
 }
