@@ -7,7 +7,7 @@
     .then((clean) => renderCard(clean));
 })();
 
-console.log(myParam);
+console.log(name);
 
 function renderCard(clean) {
   const sprite = document.getElementById("sprite");
