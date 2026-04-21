@@ -15,7 +15,7 @@ function validateSearch() {
   );
 
   if (!match) {
-    console.log("no match man");
+    console.log("Pokemon does not exist");
     return Promise.reject("Invalid pokemon name.");
   } else {
     return Promise.resolve([match.name]);
@@ -29,5 +29,6 @@ function renderCard(clean) {
 
   randomMonName.textContent = clean.name;
   randomMon.src = clean.officialArt;
+  randomMon.alt = `Official Art of ${clean.name}`;
   randomMonMessage.textContent = "";
 }
