@@ -1,5 +1,8 @@
 //Test section
 console.log("JS loaded");
+//localStorage.removeItem("favorites");
+
+
 
 // Element / Loading selection
 const addFavBtn = document.querySelector("#showSearchBtn");
@@ -22,6 +25,7 @@ loadPokemonData();
 
 //For now all confirmed favorites will just be saved in this array
 let tempFavorites = loadFavorites();
+console.log("Here are your favorites");
 console.log(tempFavorites);
 let temp;
 
