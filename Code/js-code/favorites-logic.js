@@ -74,11 +74,14 @@ function handleSearch() {
         );
     });
     temp = result;
+    const searchError = document.getElementById("search-error");
     if (result) {
+        searchError.hidden = true;
         rendersearchResult(result.dex)
         console.log("Found:", result);
     } else {
-        console.log("Not found");
+        searchError.textContent = "No Pokémon found. Please enter a valid name or Pokédex number.";
+        searchError.hidden = false;
     }
 }
 
@@ -98,6 +101,9 @@ function rendersearchResult(pokeID) {
             searchPokeName.textContent = result;
             searchresultIMG.src = artUrl;
             officialAdd.hidden = false;
+        })
+        .catch(function () {
+            searchPokeName.textContent = "Failed to load Pokémon. Check your connection and try again.";
         });
     console.log("check 1")
     

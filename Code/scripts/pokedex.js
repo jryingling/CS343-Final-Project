@@ -4,7 +4,11 @@
 
   queryPokeAPI(name)
     .then((data) => processJSON(data))
-    .then((clean) => renderCard(clean));
+    .then((clean) => renderCard(clean))
+    .catch(() => {
+      document.getElementById("name").textContent =
+        "Failed to load Pokémon. Check your connection and try again.";
+    });
 })();
 
 console.log(name);

@@ -29,9 +29,14 @@ input.addEventListener("input", function () {
 document.querySelector(".search-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
+  const searchError = document.getElementById("search-error");
   validateSearch()
-    .then((name) => goToPokemon(name[0]))
-    .catch((err) => {
-      console.log(err);
+    .then((name) => {
+      searchError.hidden = true;
+      goToPokemon(name[0]);
+    })
+    .catch(() => {
+      searchError.textContent = "No Pokémon found. Please enter a valid name.";
+      searchError.hidden = false;
     });
 });
