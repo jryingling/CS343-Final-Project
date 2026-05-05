@@ -178,6 +178,17 @@ body {
 
 /* Favorites Page */
 
+.favorites-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.favorites-controls button {
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
 .favorites-layout {
   padding: 1.5rem 2rem;
 }
