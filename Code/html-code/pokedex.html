@@ -25,20 +25,40 @@
   </header>
 
   <main class="pokedex-layout">
-    
+
     <section class="pokedex-header">
       <h2>Pokédex</h2>
       <p>Browse and search for Pokémon.</p>
     </section>
 
-    <section class="pokedex-content">
-    
+    <section class="search-section">
+      <h2>Search</h2>
+      <form class="search-form" id="pokedex-search-form">
+        <label for="pokemon-search" class="sr-only">Search for Pokémon</label>
+        <input type="text" id="pokemon-search" name="pokemon-search" placeholder="Search for Pokémon..." list="pokemon-list">
+        <datalist id="pokemon-list"></datalist>
+        <button type="submit">GO</button>
+      </form>
+      <p id="search-error" class="search-error" hidden></p>
+    </section>
+
+    <section class="pokedex-content" id="pokemon-detail">
       <img id="sprite">
       <p id="name"></p>
       <p id="height"></p>
       <p id="weight"></p>
-      <!--add stats and moves-->
       <img id="officialArt">
+    </section>
+
+    <section class="type-filter-section">
+      <h2>Browse by Type</h2>
+      <div id="type-buttons"></div>
+    </section>
+
+    <section id="type-results-section" hidden>
+      <h3 id="type-results-title"></h3>
+      <ul id="type-results"></ul>
+      <button id="load-more">Load More</button>
     </section>
 
   </main>

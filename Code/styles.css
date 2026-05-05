@@ -186,11 +186,11 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/*.favorites-grid {
+.favorites-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
-}*/
+}
 
 .favorite-card {
   background-color: #ffffff;
@@ -288,4 +288,50 @@ body {
 
 #randomMon {
   max-width: 300px;
+}
+
+/* Print layout — Pokédex page only */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #pokemon-detail,
+  #pokemon-detail * {
+    visibility: visible;
+  }
+
+  #pokemon-detail {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+  }
+  /* Official art only */
+  #sprite {
+    display: none;
+  }
+
+  #officialArt {
+    max-width: 280px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  #name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  #height,
+  #weight {
+    font-size: 1.1rem;
+    margin: 0.25rem 0;
+  }
 }

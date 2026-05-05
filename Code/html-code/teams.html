@@ -29,44 +29,33 @@
     <section class="teams-header">
       <h2>Your Teams</h2>
       <p>Build and manage your Pokémon teams.</p>
+      <label>
+        <input type="checkbox" id="showSprites" checked>
+        Show Pokémon sprites
+      </label>
     </section>
+
+    <div id="slotModal" hidden>
+      <h3>Add Pokémon to Slot</h3>
+      <input id="slotSearch" type="text" placeholder="Name or Pokédex #">
+      <button id="slotSearchBtn">Search</button>
+      <p id="slotError" hidden></p>
+      <div id="slotResult"></div>
+      <button id="slotConfirm" hidden>Add Pokémon</button>
+      <button id="slotCancel">Cancel</button>
+    </div>
 
     <section class="teams-grid">
 
-      <!-- Team Card -->
-      <article class="team-card">
-        <h3>Team 1</h3>
-
-        <div class="team-members">
-          <div class="pokemon-slot">Slot 1</div>
-          <div class="pokemon-slot">Slot 2</div>
-          <div class="pokemon-slot">Slot 3</div>
-          <div class="pokemon-slot">Slot 4</div>
-          <div class="pokemon-slot">Slot 5</div>
-          <div class="pokemon-slot">Slot 6</div>
-        </div>
-
-        <button class="team-action">Edit Team</button>
-      </article>
-
-      <article class="team-card">
-        <h3>Team 2</h3>
-
-        <div class="team-members">
-          <div class="pokemon-slot">Slot 1</div>
-          <div class="pokemon-slot">Slot 2</div>
-          <div class="pokemon-slot">Slot 3</div>
-          <div class="pokemon-slot">Slot 4</div>
-          <div class="pokemon-slot">Slot 5</div>
-          <div class="pokemon-slot">Slot 6</div>
-        </div>
-
-        <button class="team-action">Edit Team</button>
-      </article>
-
-      <!-- Add New Team -->
-      <article class="team-card add-team">
+      <article class="team-card add-team" id="addTeamCard">
         <h3>+ Create New Team</h3>
+      </article>
+
+      <article class="team-card" id="createTeamForm" hidden>
+        <label for="teamNameInput">Team Name:</label>
+        <input id="teamNameInput" type="text" placeholder="My Team">
+        <button id="confirmCreateTeam">Create</button>
+        <button id="cancelCreateTeam">Cancel</button>
       </article>
 
     </section>
@@ -77,5 +66,7 @@
     <p> Gotta Catch 'Em All!</p>
   </footer>
 
+  <script src="../scripts/util.js"></script>
+  <script src="../scripts/team.js"></script>
 </body>
 </html>

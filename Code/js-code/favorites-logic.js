@@ -50,10 +50,13 @@ officialAdd.addEventListener("click", function () {
     favoritesSection.hidden = false;
     favoritesheader.hidden = false;
     officialAdd.hidden = true;
+    // Store display name and artwork with dex data
+    temp.displayName = searchPokeName.textContent;
+    temp.artUrl = searchresultIMG.src;
     tempFavorites.push(temp);
     saveFavorites();
     temp = null;
-    console.log(tempFavorites);
+    renderFavorites();
 });
 
 //Search Functions
@@ -120,3 +123,39 @@ function loadFavorites() {
     const savedFavorites = localStorage.getItem("favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
 }
+
+// Render favorite cards from our tempFavorites array
+function renderFavorites() {
+    favoritesSection.querySelectorAll(".favorite-card").forEach(function (card) {
+        card.remove();
+    });
+
+    tempFavorites.forEach(function (pokemon, index) {
+        const card = document.createElement("article");
+        card.className = "favorite-card";
+        const name = document.createElement("h3");
+        name.textContent = pokemon.displayName || pokemon.name;
+        card.appendChild(name);
+
+        if (pokemon.artUrl) {
+            const img = document.createElement("img");
+            img.src = pokemon.artUrl;
+            img.alt = pokemon.displayName || pokemon.name;
+            img.style.width = "120px";
+            card.appendChild(img);
+        }
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.addEventListener("click", function () {
+            tempFavorites.splice(index, 1);
+            saveFavorites();
+            renderFavorites();
+        });
+        card.appendChild(removeBtn);
+
+        favoritesSection.appendChild(card);
+    });
+}
+
+renderFavorites();
