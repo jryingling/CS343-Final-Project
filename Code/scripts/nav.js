@@ -1,5 +1,5 @@
-function goToPokemon(name) {
-  window.location.href = `pokedex.html?name=${name}`;
+function goToPokemon(dex) {
+  window.location.href = `pokedex.html?id=${dex}`;
 }
 
 function validateSearch() {
@@ -12,6 +12,6 @@ function validateSearch() {
     console.log("Pokemon does not exist");
     return Promise.reject("Invalid pokemon name.");
   } else {
-    return Promise.resolve([match.name]);
+    return Promise.resolve([match.dex]);
   }
 }

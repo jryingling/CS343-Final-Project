@@ -1,7 +1,16 @@
-function queryPokeAPI(nameOrDex) {
-  return fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrDex}`).then((res) =>
+// Always query PokeAPI by dex number, never by name.
+// Many pokemon with non-standard or multiple forms (e.g. Wormadam, Deoxys)
+// will fail or return incorrect results when queried by name. Dex number
+// always resolves to the correct default form.
+function queryPokeAPI(dex) {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${dex}`).then((res) =>
     res.json(),
   );
+}
+
+function nameToDex(name, list) {
+  const match = list.find((p) => p.name.toLowerCase() === name.toLowerCase());
+  return match ? match.dex : null;
 }
 
 function processJSON(data) {

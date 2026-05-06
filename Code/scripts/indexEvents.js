@@ -16,7 +16,7 @@ function renderSuggestions() {
     const li = document.createElement("li");
     const name = p.name.charAt(0).toUpperCase() + p.name.slice(1);
     li.textContent = name;
-    li.addEventListener("click", () => goToPokemon(p.name));
+    li.addEventListener("click", () => goToPokemon(p.dex));
     list.appendChild(li);
   }
 }

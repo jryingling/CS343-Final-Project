@@ -1,10 +1,10 @@
 // Load Pokemon from URL param on page arrival (redirect from home search)
 (function fetchUrlParamPokemon() {
   const urlParams = new URLSearchParams(window.location.search);
-  const name = urlParams.get("name");
+  const id = urlParams.get("id");
 
-  if (name) {
-    queryPokeAPI(name)
+  if (id) {
+    queryPokeAPI(id)
       .then((data) => processJSON(data))
       .then((clean) => renderCard(clean))
       .catch(() => {
@@ -58,7 +58,7 @@ document.getElementById("pokedex-search-form").addEventListener("submit", functi
   }
 
   searchError.hidden = true;
-  queryPokeAPI(match.name)
+  queryPokeAPI(match.dex)
     .then((data) => processJSON(data))
     .then((clean) => renderCard(clean))
     .catch(() => {
@@ -132,7 +132,9 @@ function renderTypeList() {
     const btn = document.createElement("button");
     btn.textContent = name.charAt(0).toUpperCase() + name.slice(1);
     btn.addEventListener("click", function () {
-      queryPokeAPI(name)
+      const dex = nameToDex(name, pokemonList);
+      if (!dex) return;
+      queryPokeAPI(dex)
         .then((data) => processJSON(data))
         .then((clean) => renderCard(clean))
         .catch(() => {

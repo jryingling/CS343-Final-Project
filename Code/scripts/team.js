@@ -16,6 +16,11 @@ function saveSpritePref(val) {
   localStorage.setItem("showSprites", String(val));
 }
 
+let teamPokemonList = [];
+fetch("../data/pokemon_dex_name.json")
+  .then((r) => r.json())
+  .then((data) => { teamPokemonList = data; });
+
 let activeTeamId = null;
 let activeSlotIndex = null;
 let pendingPokemon = null;
@@ -182,7 +187,14 @@ document.addEventListener("DOMContentLoaded", function () {
     confirmBtn.hidden = true;
     pendingPokemon = null;
 
-    queryPokeAPI(query)
+    const dex = nameToDex(query, teamPokemonList);
+    if (!dex) {
+      errorEl.textContent = "No Pokémon found. Please enter a valid name.";
+      errorEl.hidden = false;
+      return;
+    }
+
+    queryPokeAPI(dex)
       .then(function (data) {
         const name = data.name.charAt(0).toUpperCase() + data.name.slice(1);
         const sprite = data.sprites.front_default;
