@@ -11,22 +11,30 @@
         "Failed to load Pokémon. Check your connection and try again.";
     });
 
-  fetch("../data/tips.json")
-    .then((response) => response.json())
-    .then((tips) => {
-      const randomIndex = Math.floor(Math.random() * tips.length);
-      const randomTip = tips[randomIndex].tip;
-
-      document.getElementById("daily-tip").textContent =
-        `Tip of The Day: ${randomTip}`;
-    })
-    .catch(() => {
-      document.getElementById("daily-tip").textContent =
-        "Tip of The Day: Failed to load tip.";
-    });
+  getDailyTip();
 })();
 
 // functions
+function getDailyTip() {
+  fetch("../data/tips.json")
+    .then((response) => response.json())
+    .then((tips) => {
+      const today = new Date();
+
+      const seed =
+        today.getFullYear() * 10000 +
+        (today.getMonth() + 1) * 100 +
+        today.getDate();
+
+      const random = Math.sin(seed + 1) * 10000;
+      const decimal = random - Math.floor(random);
+      const index = Math.floor(decimal * tips.length);
+
+      document.getElementById("daily-tip").textContent =
+        `Tip of The Day: ${tips[index].tip}`;
+    });
+}
+
 function getDailyPokemonId(maxid) {
   const today = new Date();
 
