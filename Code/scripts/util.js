@@ -19,3 +19,15 @@ function processJSON(data) {
     officialArt: data.sprites.other["official-artwork"].front_default,
   };
 }
+
+// utility + specific to index
+function renderCard(clean) {
+  const randomMonMessage = document.getElementById("randomMonMessage");
+  const randomMon = document.getElementById("randomMon");
+  const randomMonName = document.getElementById("pokemon-name");
+
+  randomMonName.textContent = clean.name;
+  randomMon.src = clean.officialArt;
+  randomMon.alt = `Official Art of ${clean.name}`;
+  randomMonMessage.textContent = "";
+}

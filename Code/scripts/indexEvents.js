@@ -1,7 +1,5 @@
 // currently used in index.js ONLY
-
 let pokemon = [];
-
 fetch("../data/pokemon_dex_name.json")
   .then((response) => response.json())
   .then((data) => {
