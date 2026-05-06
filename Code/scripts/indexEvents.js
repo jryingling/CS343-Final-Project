@@ -4,7 +4,22 @@ fetch("../data/pokemon_dex_name.json")
   .then((response) => response.json())
   .then((data) => {
     pokemon = data;
+    renderSuggestions();
   });
+
+function renderSuggestions() {
+  const list = document.querySelector(".suggestions-list");
+  list.innerHTML = "";
+
+  for (let i = 0; i < 5; i++) {
+    const p = pokemon[Math.floor(Math.random() * pokemon.length)];
+    const li = document.createElement("li");
+    const name = p.name.charAt(0).toUpperCase() + p.name.slice(1);
+    li.textContent = name;
+    li.addEventListener("click", () => goToPokemon(p.name));
+    list.appendChild(li);
+  }
+}
 
 const input = document.getElementById("pokemon-search");
 const datalist = document.getElementById("pokemon-list");
