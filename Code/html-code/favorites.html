@@ -30,8 +30,12 @@
       <p>Click a Pokémon to view more details.</p>
     </section>
 
-    <section class="favorites-grid" id="favoritesSection" >
-      <button id="showSearchBtn">Add a Favorite</button>
+    <div class="favorites-controls">
+      <button id="showSearchBtn" hidden>Add a Favorite</button>
+      <button id="editFavoritesBtn">Edit Favorites</button>
+    </div>
+
+<section class="favorites-grid" id="favoritesSection">
 
       <!-- Favorite Card -->
       <!-- 
@@ -78,15 +82,17 @@
     </section>
     <section id="searchSection" hidden>
       <h2>Search Pokémon</h2>
-      <h3>Search by Pokedex Number or Name!</h3>
+      <h3 id="searchTitle" hidden>Search by Pokedex Number or Name!</h3>
+
       <input id="searchInput" list="pokemon-list" type="text">
       <datalist id="pokemon-list"></datalist>
       <button id="searchBtn">Search</button>
-      <p id="search-error" class="search-error" hidden></p>
-      <button id="cancelSearchBtn">Back to Favorites</button>
-      <h4 id="searchPokeName"></h4>
-      <img id="searchresultIMG">
-      <button id="officialAdd" hidden>Add to Favorites</button>  
+
+      <p id="search-error" hidden></p>
+      <button id="cancelSearchBtn" hidden>Back to Favorites</button>
+      <h4 id="searchPokeName" hidden></h4>
+      <img id="searchresultIMG" hidden>
+      <button id="officialAdd" hidden>Add to Favorites</button> 
     </section>
   </main>
 
@@ -94,6 +100,5 @@
     <p>Gotta Catch 'Em All!</p>
   </footer>
 
-  <script src="../scripts/suggestedsearch.js"></script>
 </body>
 </html>

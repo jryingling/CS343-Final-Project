@@ -35,5 +35,41 @@
     },{
         "tip#": 10,
         "tip": "If you can't go to the pokemon station when your pokemon is low, use a potion!"
+    },
+    {
+        "tip#": 11,
+        "tip": "Some pokemon you encounter may be shiny, make sure you catch it!"
+    },
+    {
+        "tip#": 12,
+        "tip": "Pokemon can multiple types, a well balanced team can have many types of moves"
+    },
+    {
+        "tip#": 13,
+        "tip": "Pokemon can sometimes learn moves of types they do not posses!"
+    },
+        {
+        "tip#": 14,
+        "tip": "Pokemon that are multiple types can learn more moves, but they also can have more weaknesses!"
+    },
+    {
+        "tip#": 15,
+        "tip": "Ground type moves cannot hit flying type pokemon!"
+    },
+    {
+        "tip#": 16,
+        "tip": "Ground type moves cannot hit flying type pokemon!"
+    },
+    {
+        "tip#": 17,
+        "tip": "Ground type moves cannot hit flying type pokemon!"
+    },
+    {
+        "tip#": 18,
+        "tip": "Ground type moves cannot hit flying type pokemon!"
+    },
+    {
+        "tip#": 19,
+        "tip": "Ground type moves cannot hit flying type pokemon!"
     }
 ]
