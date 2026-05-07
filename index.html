@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Tracker</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-top">
+      <img src="../images/homepage/homepage-pikachu.png" alt="Pikachu logo" class="site-logo">
+      <h1>Home</h1>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="favorites.html">Favorites</a></li>
+          <li><a href="teams.html">Teams</a></li>
+          <li><a href="pokedex.html">Pokédex</a></li>
+        </ul>
+      </nav>
+
+      <div class="profile-display" id="profileDisplay">
+        <button id="edit-profile-btn">Edit</button>
+        <span id="display-name">Trainer</span>
+        <img id="display-pic" src="../images/homepage/homepage-pikachu.png" alt="Profile" width="40">
+        
+        <div class="stats-container">
+          <button id="statsBtn">Stats</button>
+
+          <div class="stats-popup">
+            <h3>Trainer Stats</h3>
+
+            <p id="totalFavorites">Total Favorites: 0</p>
+            <p id="totalTeams">Total Teams: 0</p>
+
+            <canvas id="generationChart" width="500" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-layout">
+    <section id="profile-editor" hidden>
+    <h2>Edit Profile</h2>
+
+    <input type="text" id="trainer-name" placeholder="Enter name">
+
+    <input type="file" id="profile-pic-input" accept="image/*">
+
+    <button id="save-profile">Save</button>
+    </section>
+    <aside class="sidebar">
+      <section class="search-section">
+        <h2>Search</h2>
+        <form class="search-form">
+          <label for="pokemon-search" class="sr-only">Search for Pokémon or game</label>
+          <input
+            type="text"
+            id="pokemon-search"
+            name="pokemon-search"
+            placeholder="Search for Pokémon or game..."
+            list="pokemon-list"
+          >
+          <datalist id="pokemon-list"></datalist>
+          <button type="submit">GO</button>
+        </form>
+        <p id="search-error" class="search-error" hidden></p>
+      </section>
+
+      <section class="suggestions-section">
+        <h2>Random Suggested Pokémon</h2>
+        <ul class="suggestions-list">
+          <li>#Filler</li>
+          <li>#Filler</li>
+          <li>#Filler</li>
+          <li>#Filler</li>
+          <li>#Filler</li>
+        </ul>
+      </section>
+    </aside>
+
+    <section class="main-content">
+
+      
+
+      <p class="welcome-text">Welcome, Trainer.</p>
+
+      <article class="pokemon-card">
+        <h2>Pokémon of the Day</h2>
+        <p id="randomMonMessage" hidden></p>
+        <div class="pokemon-main">
+          <div class="pokemon-images">
+            <img id="randomMon" class="official-art" alt="">
+            <img id="randomSprite" class="sprite" alt="">
+          </div>
+          <div class="pokemon-info">
+            <h3 id="pokemon-name" class="pokemon-name"></h3>
+            <div id="randomTypeBadges" class="type-badges"></div>
+            <div class="pokemon-measurements">
+              <span id="randomHeight"></span>
+              <span id="randomWeight"></span>
+            </div>
+            <div class="base-stats">
+              <p class="base-stats-label">Base Stats</p>
+              <div id="randomStatBars"></div>
+            </div>
+          </div>
+        </div>
+        <h4 id="daily-tip">Tip of The Day:</h4>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p> Gotta Catch 'Em All!</p>
+  </footer>
+
+  <script src="../scripts/indexEvents.js"></script>
+  <script src="../scripts/nav.js"></script>
+  <script src="../scripts/util.js"></script>
+  <script src="../scripts/trainer.js"></script>
+  <script src="../scripts/index.js"></script>
+</body>
+</html>
