@@ -21,9 +21,22 @@
       </nav>
 
       <div class="profile-display" id="profileDisplay">
+        <button id="edit-profile-btn">Edit</button>
         <span id="display-name">Trainer</span>
         <img id="display-pic" src="../images/homepage/homepage-pikachu.png" alt="Profile" width="40">
-        <button id="edit-profile-btn">Edit</button>
+        
+        <div class="stats-container">
+          <button id="statsBtn">Stats</button>
+
+          <div class="stats-popup">
+            <h3>Trainer Stats</h3>
+
+            <p id="totalFavorites">Total Favorites: 0</p>
+            <p id="totalTeams">Total Teams: 0</p>
+
+            <canvas id="generationChart" width="500" height="300"></canvas>
+          </div>
+        </div>
       </div>
     </div>
   </header>

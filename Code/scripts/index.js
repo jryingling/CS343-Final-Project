@@ -62,3 +62,98 @@ function getDailyPokemonId(maxid) {
 
   return Math.floor(decimal * maxid) + 1;
 }
+
+// trainer stats
+
+function getGeneration(dex) {
+  if (dex <= 151) {
+    return 1;
+  } else if (dex <= 251) {
+    return 2;
+  } else if (dex <= 386) {
+    return 3;
+  } else if (dex <= 493) {
+    return 4;
+  } else if (dex <= 649) {
+    return 5;
+  } else if (dex <= 721) {
+    return 6;
+  } else if (dex <= 809) {
+    return 7;
+  } else if (dex <= 905) {
+    return 8;
+  } else {
+    return 9;
+  }
+}
+
+function countFavoritesByGeneration() {
+  const savedFavorites = localStorage.getItem("favorites");
+  const favorites = savedFavorites ? JSON.parse(savedFavorites) : [];
+
+  const generationCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  favorites.forEach(function (pokemon) {
+    const generation = getGeneration(pokemon.dex);
+    generationCounts[generation - 1]++;
+  });
+
+  return generationCounts;
+}
+
+function countTeams() {
+  const savedTeams = localStorage.getItem("teams");
+  const teams = savedTeams ? JSON.parse(savedTeams) : [];
+
+  return teams.length;
+}
+
+function drawGenerationChart() {
+  const canvas = document.getElementById("generationChart");
+  const ctx = canvas.getContext("2d");
+
+  const generationCounts = countFavoritesByGeneration();
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const chartBottom = 250;
+  const chartLeft = 40;
+  const barWidth = 35;
+  const gap = 15;
+
+  const maxCount = Math.max(...generationCounts, 1);
+
+  ctx.font = "14px Arial";
+
+  generationCounts.forEach(function (count, index) {
+    const barHeight = (count / maxCount) * 180;
+    const x = chartLeft + index * (barWidth + gap);
+    const y = chartBottom - barHeight;
+
+    ctx.fillStyle = "steelblue";
+    ctx.fillRect(x, y, barWidth, barHeight);
+
+    ctx.fillStyle = "black";
+    ctx.fillText(count, x + 10, y - 8);
+
+    ctx.fillText("G" + (index + 1), x + 5, chartBottom + 20);
+  });
+
+  ctx.fillStyle = "black";
+  ctx.fillText("Favorites by Generation", 170, 25);
+}
+
+function updateStats() {
+  const savedFavorites = localStorage.getItem("favorites");
+  const favorites = savedFavorites ? JSON.parse(savedFavorites) : [];
+
+  document.getElementById("totalFavorites").textContent =
+    "Total Favorites: " + favorites.length;
+
+  document.getElementById("totalTeams").textContent =
+    "Total Teams: " + countTeams();
+
+  drawGenerationChart();
+}
+
+updateStats();
