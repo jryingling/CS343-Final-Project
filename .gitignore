@@ -2,3 +2,6 @@
 .idea
 .DS_Store
 CLAIMS.md
+node_modules
+package-lock.json
+package.json
