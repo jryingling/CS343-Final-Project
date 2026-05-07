@@ -52,35 +52,45 @@ function statColor(value) {
 function renderCard(clean) {
   document.getElementById("randomMon").src = clean.officialArt;
   document.getElementById("randomMon").alt = "Official Art of " + clean.name;
-  document.getElementById("randomSprite").src = clean.sprite;
-  document.getElementById("randomSprite").alt = clean.name;
+
+  const sprite = document.getElementById("randomSprite");
+  if (sprite) { sprite.src = clean.sprite; sprite.alt = clean.name; }
+
   document.getElementById("pokemon-name").textContent = clean.name;
-  document.getElementById("randomHeight").textContent = "Height: " + (clean.height / 10) + " m";
-  document.getElementById("randomWeight").textContent = "Weight: " + (clean.weight / 10) + " kg";
+
+  const heightEl = document.getElementById("randomHeight");
+  if (heightEl) heightEl.textContent = "Height: " + (clean.height / 10) + " m";
+
+  const weightEl = document.getElementById("randomWeight");
+  if (weightEl) weightEl.textContent = "Weight: " + (clean.weight / 10) + " kg";
 
   const badges = document.getElementById("randomTypeBadges");
-  badges.innerHTML = "";
-  clean.types.forEach(function (type) {
-    const span = document.createElement("span");
-    span.className = "type-badge type-" + type;
-    span.textContent = capitalize(type);
-    badges.appendChild(span);
-  });
+  if (badges) {
+    badges.innerHTML = "";
+    clean.types.forEach(function (type) {
+      const span = document.createElement("span");
+      span.className = "type-badge type-" + type;
+      span.textContent = capitalize(type);
+      badges.appendChild(span);
+    });
+  }
 
   const statBars = document.getElementById("randomStatBars");
-  statBars.innerHTML = "";
-  clean.stats.forEach(function (stat) {
-    const label = STAT_LABELS[stat.name] || stat.name;
-    const pct = Math.min(100, (stat.value / 255) * 100).toFixed(1);
-    const color = statColor(stat.value);
-    const row = document.createElement("div");
-    row.className = "stat-row";
-    row.innerHTML =
-      '<span class="stat-label">' + label + "</span>" +
-      '<div class="stat-bar-bg"><div class="stat-bar-fill" style="width:' + pct + "%;background:" + color + '"></div></div>' +
-      '<span class="stat-value">' + stat.value + "</span>";
-    statBars.appendChild(row);
-  });
+  if (statBars) {
+    statBars.innerHTML = "";
+    clean.stats.forEach(function (stat) {
+      const label = STAT_LABELS[stat.name] || stat.name;
+      const pct = Math.min(100, (stat.value / 255) * 100).toFixed(1);
+      const color = statColor(stat.value);
+      const row = document.createElement("div");
+      row.className = "stat-row";
+      row.innerHTML =
+        '<span class="stat-label">' + label + "</span>" +
+        '<div class="stat-bar-bg"><div class="stat-bar-fill" style="width:' + pct + "%;background:" + color + '"></div></div>' +
+        '<span class="stat-value">' + stat.value + "</span>";
+      statBars.appendChild(row);
+    });
+  }
 
   const msg = document.getElementById("randomMonMessage");
   if (msg) msg.hidden = true;
