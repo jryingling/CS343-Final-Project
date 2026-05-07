@@ -44,6 +44,10 @@
   transition: transform 0.2s ease;
 }
 
+.favorite-card:hover {
+  transform: scale(1.03);
+}
+
 .searchPokeName {
   padding: 2rem;
 }

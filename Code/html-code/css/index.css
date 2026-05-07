@@ -1,8 +1,10 @@
 .page-layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 500px 1fr;
   gap: 1.5rem;
   padding: 1.5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .sidebar,
