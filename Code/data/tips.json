@@ -42,7 +42,7 @@
     },
     {
         "tip#": 12,
-        "tip": "Pokemon can multiple types, a well balanced team can have many types of moves"
+        "tip": "Pokemon can have multiple types, a well balanced team can have many types of moves"
     },
     {
         "tip#": 13,
@@ -54,22 +54,22 @@
     },
     {
         "tip#": 15,
-        "tip": "Ground type moves cannot hit flying type pokemon!"
+        "tip": "Status effects can greatly affect the outcome of a battle, use moves that cause them!!"
     },
     {
         "tip#": 16,
-        "tip": "Ground type moves cannot hit flying type pokemon!"
+        "tip": "Status effects can greatly affect the outcome of a battle, make sure you heal your pokemons if you can!"
     },
     {
         "tip#": 17,
-        "tip": "Ground type moves cannot hit flying type pokemon!"
+        "tip": "Masterballs are guaranteed to catch any pokemon!"
     },
     {
         "tip#": 18,
-        "tip": "Ground type moves cannot hit flying type pokemon!"
+        "tip": "When you a pokemon is on low health, you have a greater chance to catch it!"
     },
     {
         "tip#": 19,
-        "tip": "Ground type moves cannot hit flying type pokemon!"
+        "tip": "You have a greater chance of catching a pokemon if it is paralyzed, asleep, or frozen!"
     }
 ]

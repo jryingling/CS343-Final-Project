@@ -1,3 +1,5 @@
+
+
 // Load Pokemon from URL param on page arrival (redirect from home search)
 (function fetchUrlParamPokemon() {
   const urlParams = new URLSearchParams(window.location.search);
