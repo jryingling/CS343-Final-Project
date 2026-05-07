@@ -56,6 +56,9 @@ function renderFavorites() {
           img.src = clean.officialArt;
           poke.artUrl = clean.officialArt;
           saveFavorites();
+        })
+        .catch(() => {
+          img.alt = "API Error: Check your connection.";
         });
     }
 

@@ -14,8 +14,9 @@ let movesPage = 0;
       .then((data) => processJSON(data))
       .then((clean) => renderCard(clean))
       .catch(() => {
-        document.getElementById("name").textContent =
-          "Failed to load Pokémon. Check your connection and try again.";
+        const searchError = document.getElementById("search-error");
+        searchError.textContent = "Failed to load Pokémon. Check your connection.";
+        searchError.hidden = false;
       });
   }
 })();
@@ -122,8 +123,9 @@ function renderTypeList() {
         .then((data) => processJSON(data))
         .then((clean) => renderCard(clean))
         .catch(() => {
-          document.getElementById("name").textContent =
-            "Failed to load Pokémon. Check your connection and try again.";
+          const searchError = document.getElementById("search-error");
+          searchError.textContent = "Failed to load Pokémon. Check your connection.";
+          searchError.hidden = false;
         });
     });
     li.appendChild(btn);

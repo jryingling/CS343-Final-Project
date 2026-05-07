@@ -41,8 +41,8 @@ document.getElementById("pokedex-search-form").addEventListener("submit", functi
         .then((data) => processJSON(data))
         .then((clean) => renderCard(clean))
         .catch(() => {
-          document.getElementById("name").textContent =
-            "Failed to load Pokémon. Check your connection and try again.";
+          searchError.textContent = "Failed to load Pokémon. Check your connection.";
+          searchError.hidden = false;
         });
     })
     .catch(() => {

@@ -7,8 +7,9 @@
     .then((data) => processJSON(data))
     .then((clean) => renderCard(clean))
     .catch(() => {
-      document.getElementById("randomMonMessage").textContent =
-        "Failed to load Pokémon. Check your connection and try again.";
+      const msg = document.getElementById("randomMonMessage");
+      msg.textContent = "Failed to load Pokémon. Check your connection.";
+      msg.hidden = false;
     });
 
   getDailyTip();
