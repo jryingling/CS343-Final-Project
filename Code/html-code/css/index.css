@@ -11,6 +11,7 @@
   padding: 1.25rem;
   border: 1px solid #ddd;
   border-radius: 8px;
+  
 }
 
 .search-section,
@@ -67,5 +68,34 @@
 @media (max-width: 800px) {
   .page-layout {
     grid-template-columns: 1fr;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .sidebar,
+  .main-content {
+    width: 100%;
+    min-width: 0;
+  }
+  
+  .pokemon-main {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pokemon-info {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .type-badges,
+  .pokemon-measurements {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-row {
+    grid-template-columns: 60px 1fr 30px;
   }
 }
