@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teams - Pokémon Dashboard</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/teams.css">
 </head>
 <body>
 
@@ -21,8 +22,37 @@
         <li><a href="pokedex.html">Pokédex</a></li>
       </ul>
     </nav>
+
+      <div class="profile-display" id="profileDisplay">
+        <button id="edit-profile-btn">Edit</button>
+        <span id="display-name">Trainer</span>
+        <img id="display-pic" src="../images/homepage/homepage-pikachu.png" alt="Profile" width="40">
+
+        <div class="stats-container">
+          <button id="statsBtn">Stats</button>
+
+          <div class="stats-popup">
+            <h3>Trainer Stats</h3>
+
+            <p id="totalFavorites">Total Favorites: 0</p>
+            <p id="totalTeams">Total Teams: 0</p>
+
+            <canvas id="generationChart" width="500" height="300"></canvas>
+          </div>
+        </div>
+      </div>
      </div>
   </header>
+
+  <section id="profile-editor" hidden>
+    <h2>Edit Profile</h2>
+
+    <input type="text" id="trainer-name" placeholder="Enter name">
+
+    <input type="file" id="profile-pic-input" accept="image/*">
+
+    <button id="save-profile">Save</button>
+  </section>
 
   <main class="teams-layout">
 
@@ -67,6 +97,8 @@
   </footer>
 
   <script src="../scripts/util.js"></script>
+  <script src="../scripts/trainer.js"></script>
   <script src="../scripts/team.js"></script>
+  <script src="../scripts/teamEvents.js"></script>
 </body>
 </html>
