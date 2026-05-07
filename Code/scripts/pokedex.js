@@ -2,6 +2,9 @@
 const PAGE_SIZE = 10;
 let allTypeResults = [];
 let displayedCount = PAGE_SIZE;
+const MOVES_PER_PAGE = 20;
+let currentMoves = [];
+let movesPage = 0;
 
 // URL param load on page arrival (redirect from search)
 (function fetchUrlParamPokemon() {
@@ -19,13 +22,64 @@ let displayedCount = PAGE_SIZE;
 
 // Pokedex-specific renderCard — different elements from util.js renderCard
 function renderCard(clean) {
-  document.getElementById("sprite").src = clean.sprite;
-  document.getElementById("sprite").alt = clean.name;
-  document.getElementById("name").textContent = clean.name;
-  document.getElementById("height").textContent = "Height: " + clean.height;
-  document.getElementById("weight").textContent = "Weight: " + clean.weight;
+  document.getElementById("pokemon-detail").hidden = false;
+
   document.getElementById("officialArt").src = clean.officialArt;
   document.getElementById("officialArt").alt = "Official art of " + clean.name;
+  document.getElementById("sprite").src = clean.sprite;
+  document.getElementById("sprite").alt = clean.name;
+
+  document.getElementById("name").textContent = clean.name;
+  document.getElementById("height").textContent = "Height: " + (clean.height / 10) + " m";
+  document.getElementById("weight").textContent = "Weight: " + (clean.weight / 10) + " kg";
+
+  const badgesEl = document.getElementById("type-badges");
+  badgesEl.innerHTML = "";
+  clean.types.forEach(function (type) {
+    const span = document.createElement("span");
+    span.className = "type-badge type-" + type;
+    span.textContent = capitalize(type);
+    badgesEl.appendChild(span);
+  });
+
+  const statBars = document.getElementById("stat-bars");
+  statBars.innerHTML = "";
+  clean.stats.forEach(function (stat) {
+    const label = STAT_LABELS[stat.name] || stat.name;
+    const pct = Math.min(100, (stat.value / 255) * 100).toFixed(1);
+    const color = statColor(stat.value);
+    const row = document.createElement("div");
+    row.className = "stat-row";
+    row.innerHTML =
+      '<span class="stat-label">' + label + "</span>" +
+      '<div class="stat-bar-bg"><div class="stat-bar-fill" style="width:' + pct + "%;background:" + color + '"></div></div>' +
+      '<span class="stat-value">' + stat.value + "</span>";
+    statBars.appendChild(row);
+  });
+
+  currentMoves = clean.moves;
+  movesPage = 0;
+  renderMoves();
+}
+
+function renderMoves() {
+  const start = movesPage * MOVES_PER_PAGE;
+  const total = Math.ceil(currentMoves.length / MOVES_PER_PAGE);
+  const page = currentMoves.slice(start, start + MOVES_PER_PAGE);
+
+  const grid = document.getElementById("moves-grid");
+  grid.innerHTML = "";
+  page.forEach(function (move) {
+    const span = document.createElement("span");
+    span.className = "move-badge";
+    span.textContent = capitalize(move.replace(/-/g, " "));
+    grid.appendChild(span);
+  });
+
+  document.getElementById("moves-page-label").textContent =
+    "Page " + (movesPage + 1) + " of " + total;
+  document.getElementById("moves-prev").disabled = movesPage === 0;
+  document.getElementById("moves-next").disabled = movesPage >= total - 1;
 }
 
 function loadType(type) {

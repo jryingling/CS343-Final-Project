@@ -1,5 +1,22 @@
+.pokedex-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Top panel: search + type filter ── */
+.pokedex-top {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
 .search-section {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .search-section h2 {
@@ -25,29 +42,107 @@
   cursor: pointer;
 }
 
-.pokedex-layout {
-  padding: 1.5rem 2rem;
+.type-filter-section h2 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
 }
 
-.pokedex-header {
-  margin-bottom: 1.5rem;
+#type-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
+#type-results-section {
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 0.75rem;
+}
+
+#type-results-section h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+#type-results {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+#type-results li button {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+#type-results li button:hover {
+  background: #e0e0e0;
+}
+
+/* ── Pokémon detail card ── */
 .pokedex-content {
-  background-color: #ffffff;
+  background: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 2rem;
-  min-height: 300px;
 }
 
-.placeholder-text {
-  color: #777;
-  text-align: center;
-  margin-top: 2rem;
+/* ── Moves ── */
+.pokemon-moves {
+  border-top: 1px solid #eee;
+  padding-top: 1.25rem;
 }
 
-/* Print layout — Pokédex page only */
+.pokemon-moves h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+#moves-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  min-height: 80px;
+}
+
+.move-badge {
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.moves-pagination {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.moves-pagination button {
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.moves-pagination button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ── Print layout — Pokédex page only ── */
 @media print {
   body * {
     visibility: hidden;
@@ -69,7 +164,7 @@
     padding: 2rem;
     width: 100%;
   }
-  /* Official art only */
+
   #sprite {
     display: none;
   }

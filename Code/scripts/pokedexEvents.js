@@ -61,6 +61,7 @@ const typeButtonsDiv = document.getElementById("type-buttons");
 TYPES.forEach(function (type) {
   const btn = document.createElement("button");
   btn.textContent = capitalize(type);
+  btn.className = "type-btn type-" + type;
   btn.addEventListener("click", function () { loadType(type); });
   typeButtonsDiv.appendChild(btn);
 });
@@ -68,4 +69,14 @@ TYPES.forEach(function (type) {
 document.getElementById("load-more").addEventListener("click", function () {
   displayedCount += PAGE_SIZE;
   renderTypeList();
+});
+
+document.getElementById("moves-prev").addEventListener("click", function () {
+  movesPage--;
+  renderMoves();
+});
+
+document.getElementById("moves-next").addEventListener("click", function () {
+  movesPage++;
+  renderMoves();
 });

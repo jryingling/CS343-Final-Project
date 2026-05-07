@@ -33,13 +33,55 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function renderCard(clean) {
-  const randomMonMessage = document.getElementById("randomMonMessage");
-  const randomMon = document.getElementById("randomMon");
-  const randomMonName = document.getElementById("pokemon-name");
+const STAT_LABELS = {
+  "hp": "HP",
+  "attack": "Attack",
+  "defense": "Defense",
+  "special-attack": "Sp. Atk",
+  "special-defense": "Sp. Def",
+  "speed": "Speed",
+};
 
-  randomMonName.textContent = clean.name;
-  randomMon.src = clean.officialArt;
-  randomMon.alt = `Official Art of ${clean.name}`;
-  if (randomMonMessage) randomMonMessage.textContent = "";
+function statColor(value) {
+  if (value < 50) return "#FF6B6B";
+  if (value < 80) return "#FFA94D";
+  if (value < 100) return "#FFD43B";
+  return "#69DB7C";
+}
+
+function renderCard(clean) {
+  document.getElementById("randomMon").src = clean.officialArt;
+  document.getElementById("randomMon").alt = "Official Art of " + clean.name;
+  document.getElementById("randomSprite").src = clean.sprite;
+  document.getElementById("randomSprite").alt = clean.name;
+  document.getElementById("pokemon-name").textContent = clean.name;
+  document.getElementById("randomHeight").textContent = "Height: " + (clean.height / 10) + " m";
+  document.getElementById("randomWeight").textContent = "Weight: " + (clean.weight / 10) + " kg";
+
+  const badges = document.getElementById("randomTypeBadges");
+  badges.innerHTML = "";
+  clean.types.forEach(function (type) {
+    const span = document.createElement("span");
+    span.className = "type-badge type-" + type;
+    span.textContent = capitalize(type);
+    badges.appendChild(span);
+  });
+
+  const statBars = document.getElementById("randomStatBars");
+  statBars.innerHTML = "";
+  clean.stats.forEach(function (stat) {
+    const label = STAT_LABELS[stat.name] || stat.name;
+    const pct = Math.min(100, (stat.value / 255) * 100).toFixed(1);
+    const color = statColor(stat.value);
+    const row = document.createElement("div");
+    row.className = "stat-row";
+    row.innerHTML =
+      '<span class="stat-label">' + label + "</span>" +
+      '<div class="stat-bar-bg"><div class="stat-bar-fill" style="width:' + pct + "%;background:" + color + '"></div></div>' +
+      '<span class="stat-value">' + stat.value + "</span>";
+    statBars.appendChild(row);
+  });
+
+  const msg = document.getElementById("randomMonMessage");
+  if (msg) msg.hidden = true;
 }

@@ -89,18 +89,26 @@
 
       <article class="pokemon-card">
         <h2>Pokémon of the Day</h2>
-
-        <h3 id="pokemon-name"></h3>
-
-        <div class="pokemon-image-placeholder">
-          <!--better way to do this?-->
-          <p id="randomMonMessage">Pokémon goes here</p>
-          <img id="randomMon">
+        <p id="randomMonMessage" hidden></p>
+        <div class="pokemon-main">
+          <div class="pokemon-images">
+            <img id="randomMon" class="official-art" alt="">
+            <img id="randomSprite" class="sprite" alt="">
+          </div>
+          <div class="pokemon-info">
+            <h3 id="pokemon-name" class="pokemon-name"></h3>
+            <div id="randomTypeBadges" class="type-badges"></div>
+            <div class="pokemon-measurements">
+              <span id="randomHeight"></span>
+              <span id="randomWeight"></span>
+            </div>
+            <div class="base-stats">
+              <p class="base-stats-label">Base Stats</p>
+              <div id="randomStatBars"></div>
+            </div>
+          </div>
         </div>
-        <!-- Filler tip, We could make a big json list  and it 
-         randomly selects a different one everytime the page loads-->
         <h4 id="daily-tip">Tip of The Day:</h4>
-
       </article>
     </section>
   </main>

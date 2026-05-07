@@ -56,39 +56,58 @@
 
   <main class="pokedex-layout">
 
-    <section class="pokedex-header">
-      <h2>Pokédex</h2>
-      <p>Browse and search for Pokémon.</p>
-    </section>
+    <div class="pokedex-top">
+      <section class="search-section">
+        <h2>Search</h2>
+        <form class="search-form" id="pokedex-search-form">
+          <label for="pokemon-search" class="sr-only">Search for Pokémon</label>
+          <input type="text" id="pokemon-search" name="pokemon-search" placeholder="Search for Pokémon..." list="pokemon-list">
+          <datalist id="pokemon-list"></datalist>
+          <button type="submit">GO</button>
+        </form>
+        <p id="search-error" class="search-error" hidden></p>
+      </section>
 
-    <section class="search-section">
-      <h2>Search</h2>
-      <form class="search-form" id="pokedex-search-form">
-        <label for="pokemon-search" class="sr-only">Search for Pokémon</label>
-        <input type="text" id="pokemon-search" name="pokemon-search" placeholder="Search for Pokémon..." list="pokemon-list">
-        <datalist id="pokemon-list"></datalist>
-        <button type="submit">GO</button>
-      </form>
-      <p id="search-error" class="search-error" hidden></p>
-    </section>
+      <section class="type-filter-section">
+        <h2>Browse by Type</h2>
+        <div id="type-buttons"></div>
+      </section>
 
-    <section class="pokedex-content" id="pokemon-detail">
-      <img id="sprite">
-      <p id="name"></p>
-      <p id="height"></p>
-      <p id="weight"></p>
-      <img id="officialArt">
-    </section>
+      <section id="type-results-section" hidden>
+        <h3 id="type-results-title"></h3>
+        <ul id="type-results"></ul>
+        <button id="load-more">Load More</button>
+      </section>
+    </div>
 
-    <section class="type-filter-section">
-      <h2>Browse by Type</h2>
-      <div id="type-buttons"></div>
-    </section>
-
-    <section id="type-results-section" hidden>
-      <h3 id="type-results-title"></h3>
-      <ul id="type-results"></ul>
-      <button id="load-more">Load More</button>
+    <section class="pokedex-content" id="pokemon-detail" hidden>
+      <div class="pokemon-main">
+        <div class="pokemon-images">
+          <img id="officialArt" class="official-art" alt="">
+          <img id="sprite" class="sprite" alt="">
+        </div>
+        <div class="pokemon-info">
+          <h2 id="name" class="pokemon-name"></h2>
+          <div id="type-badges" class="type-badges"></div>
+          <div class="pokemon-measurements">
+            <span id="height"></span>
+            <span id="weight"></span>
+          </div>
+          <div class="base-stats">
+            <p class="base-stats-label">Base Stats</p>
+            <div id="stat-bars"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pokemon-moves">
+        <h3>Moves</h3>
+        <div id="moves-grid"></div>
+        <div class="moves-pagination">
+          <button id="moves-prev">← Prev</button>
+          <span id="moves-page-label"></span>
+          <button id="moves-next">Next →</button>
+        </div>
+      </div>
     </section>
 
   </main>

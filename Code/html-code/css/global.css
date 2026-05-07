@@ -134,3 +134,120 @@ body {
   background: #f8f8f8;
   border: 1px solid #ccc;
 }
+
+/* ── Shared Pokémon card styles ── */
+
+/* TYPE BADGE SHAPE — padding, radius, font size for all type labels */
+.type-badge,
+.type-btn {
+  padding: 0.25rem 0.75rem;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: none;
+  cursor: default;
+}
+
+.type-btn {
+  cursor: pointer;
+}
+
+/* TYPE COLORS — one line per type, edit background (and color for light types) */
+.type-normal   { background: #A8A77A; }
+.type-fire     { background: #EE8130; }
+.type-water    { background: #6390F0; }
+.type-electric { background: #F7D02C; color: #333; text-shadow: none; }
+.type-grass    { background: #7AC74C; }
+.type-ice      { background: #96D9D6; color: #333; text-shadow: none; }
+.type-fighting { background: #C22E28; }
+.type-poison   { background: #A33EA1; }
+.type-ground   { background: #E2BF65; color: #333; text-shadow: none; }
+.type-flying   { background: #A98FF3; }
+.type-psychic  { background: #F95587; }
+.type-bug      { background: #A6B91A; }
+.type-rock     { background: #B6A136; }
+.type-ghost    { background: #735797; }
+.type-dragon   { background: #6F35FC; }
+.type-dark     { background: #705746; }
+.type-steel    { background: #B7B7CE; color: #333; text-shadow: none; }
+.type-fairy    { background: #D685AD; }
+
+/* CARD LAYOUT — two-column grid: left=images, right=info. Edit grid-template-columns to resize */
+.pokemon-main {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.pokemon-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.official-art {
+  width: 100%;
+  max-width: 240px;
+}
+
+.sprite {
+  width: 96px;
+}
+
+.pokemon-name {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.type-badges {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.pokemon-measurements {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.base-stats-label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* STAT BARS — row layout: label | bar | number. Edit stat-bar-bg for track color, stat-bar-fill colors are set inline via JS (statColor fn in util.js) */
+.stat-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 30px;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: right;
+}
+
+.stat-bar-bg {
+  background: #eee;
+  height: 8px;
+}
+
+.stat-bar-fill {
+  height: 100%;
+}
+
+.stat-value {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
