@@ -61,7 +61,11 @@ document.getElementById("officialAdd").addEventListener("click", () => {
 
 document.getElementById("editFavoritesBtn").addEventListener("click", () => {
   editMode = !editMode;
-  document.getElementById("editFavoritesBtn").textContent = editMode ? "Done" : "Edit Favorites";
-  document.getElementById("showSearchBtn").hidden = !editMode;
+  if (!editMode) {
+    location.reload();
+    return;
+  }
+  document.getElementById("editFavoritesBtn").textContent = "Done";
+  document.getElementById("showSearchBtn").hidden = false;
   renderFavorites();
 });
