@@ -1,0 +1,94 @@
+.search-section {
+  margin-bottom: 1.5rem;
+}
+
+.search-section h2 {
+  margin-top: 0;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.search-form input {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.6rem;
+  font-size: 1rem;
+}
+
+.search-form button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.pokedex-layout {
+  padding: 1.5rem 2rem;
+}
+
+.pokedex-header {
+  margin-bottom: 1.5rem;
+}
+
+.pokedex-content {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  min-height: 300px;
+}
+
+.placeholder-text {
+  color: #777;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Print layout — Pokédex page only */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #pokemon-detail,
+  #pokemon-detail * {
+    visibility: visible;
+  }
+
+  #pokemon-detail {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+  }
+  /* Official art only */
+  #sprite {
+    display: none;
+  }
+
+  #officialArt {
+    max-width: 280px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  #name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  #height,
+  #weight {
+    font-size: 1.1rem;
+    margin: 0.25rem 0;
+  }
+}
