@@ -407,6 +407,7 @@ body {
   .header-top {
     flex-wrap: wrap;
     justify-content: center;
+     width: 100%;
   }
 
   .main-nav {
@@ -418,5 +419,5 @@ body {
     justify-content: center;
   }
 
-  
+
 }
