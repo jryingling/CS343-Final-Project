@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Favorites - Pokémon Dashboard</title>
   <link rel="stylesheet" href="../styles.css">
-  <script src="../js-code/favorites-logic.js" defer></script> 
 </head>
 <body>
 
@@ -84,14 +83,14 @@
       <h2>Search Pokémon</h2>
       <h3 id="searchTitle" hidden>Search by Pokedex Number or Name!</h3>
 
-      <input id="searchInput" list="pokemon-list" type="text">
+      <input id="pokemon-search" list="pokemon-list" type="text">
       <datalist id="pokemon-list"></datalist>
       <button id="searchBtn">Search</button>
 
       <p id="search-error" hidden></p>
       <button id="cancelSearchBtn" hidden>Back to Favorites</button>
-      <h4 id="searchPokeName" hidden></h4>
-      <img id="searchresultIMG" hidden>
+      <h4 id="pokemon-name" hidden></h4>
+      <img id="randomMon" hidden>
       <button id="officialAdd" hidden>Add to Favorites</button> 
     </section>
   </main>
@@ -100,5 +99,9 @@
     <p>Gotta Catch 'Em All!</p>
   </footer>
 
+  <script src="../scripts/util.js"></script>
+  <script src="../scripts/nav.js"></script>
+  <script src="../scripts/favorites.js"></script>
+  <script src="../scripts/favoritesEvents.js"></script>
 </body>
 </html>

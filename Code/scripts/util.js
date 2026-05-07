@@ -29,7 +29,10 @@ function processJSON(data) {
   };
 }
 
-// utility + specific to index
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function renderCard(clean) {
   const randomMonMessage = document.getElementById("randomMonMessage");
   const randomMon = document.getElementById("randomMon");
@@ -38,5 +41,5 @@ function renderCard(clean) {
   randomMonName.textContent = clean.name;
   randomMon.src = clean.officialArt;
   randomMon.alt = `Official Art of ${clean.name}`;
-  randomMonMessage.textContent = "";
+  if (randomMonMessage) randomMonMessage.textContent = "";
 }
