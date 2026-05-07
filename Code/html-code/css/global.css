@@ -109,7 +109,8 @@ body {
 
 .stats-container {
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 .stats-popup {
@@ -250,4 +251,68 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
   color: #333;
+}
+
+@media (max-width: 700px) {
+  .header-top {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .main-nav {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .main-nav ul {
+    justify-content: center;
+  }
+
+  .profile-display {
+    width: 100%;
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .stats-popup {
+    position: fixed;
+    top: 200px;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: none;
+  }
+
+  #generationChart {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .pokemon-main {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pokemon-images,
+  .pokemon-info {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .pokemon-info {
+    text-align: center;
+  }
+
+  .type-badges,
+  .pokemon-measurements {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .official-art {
+    max-width: 240px;
+  }
 }
