@@ -22,7 +22,7 @@ function getSuggestions() {
   for (let i = 0; i < 5; i++) {
     const p = pokemon[Math.floor(Math.random() * pokemon.length)];
     const li = document.createElement("li");
-    const name = p.name.charAt(0).toUpperCase() + p.name.slice(1);
+    const name = capitalize(p.name);
     li.textContent = name;
     li.addEventListener("click", () => goToPokemon(p.dex));
     list.appendChild(li);

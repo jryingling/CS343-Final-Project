@@ -19,7 +19,7 @@ input.addEventListener("input", function () {
     .slice(0, 10)
     .forEach((p) => {
       const option = document.createElement("option");
-      option.value = p.name.charAt(0).toUpperCase() + p.name.slice(1);
+      option.value = capitalize(p.name);
       datalist.appendChild(option);
     });
 });

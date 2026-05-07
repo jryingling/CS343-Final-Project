@@ -1,8 +1,11 @@
-// Load Pokemon from URL param on page arrival (redirect from home search)
-(function fetchUrlParamPokemon() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get("id");
+// State
+const PAGE_SIZE = 10;
+let allTypeResults = [];
+let displayedCount = PAGE_SIZE;
 
+// URL param load on page arrival (redirect from search)
+(function fetchUrlParamPokemon() {
+  const id = new URLSearchParams(window.location.search).get("id");
   if (id) {
     queryPokeAPI(id)
       .then((data) => processJSON(data))
@@ -14,59 +17,7 @@
   }
 })();
 
-// Autocomplete search data
-let pokemonList = [];
-fetch("../data/pokemon_dex_name.json")
-  .then((r) => r.json())
-  .then((data) => { pokemonList = data; });
-
-const searchInput = document.getElementById("pokemon-search");
-const datalistEl = document.getElementById("pokemon-list");
-
-// Autocomplete suggestions + live type list filter when we r typing
-searchInput.addEventListener("input", function () {
-  const query = this.value.toLowerCase();
-
-  datalistEl.innerHTML = "";
-  pokemonList
-    .filter((p) => p.name.toLowerCase().startsWith(query))
-    .slice(0, 10)
-    .forEach((p) => {
-      const option = document.createElement("option");
-      option.value = p.name.charAt(0).toUpperCase() + p.name.slice(1);
-      datalistEl.appendChild(option);
-    });
-
-  // when type is loaded, re filter the list and reset to first page
-  if (allTypeResults.length > 0) {
-    displayedCount = PAGE_SIZE;
-    renderTypeList();
-  }
-});
-
-// Search form submit and update detail card in place
-document.getElementById("pokedex-search-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const val = searchInput.value.trim();
-  const searchError = document.getElementById("search-error");
-  const match = pokemonList.find((p) => p.name.toLowerCase() === val.toLowerCase());
-
-  if (!match) {
-    searchError.textContent = "No Pokémon found. Please enter a valid name.";
-    searchError.hidden = false;
-    return;
-  }
-
-  searchError.hidden = true;
-  queryPokeAPI(match.dex)
-    .then((data) => processJSON(data))
-    .then((clean) => renderCard(clean))
-    .catch(() => {
-      document.getElementById("name").textContent =
-        "Failed to load Pokémon. Check your connection and try again.";
-    });
-});
-
+// Pokedex-specific renderCard — different elements from util.js renderCard
 function renderCard(clean) {
   document.getElementById("sprite").src = clean.sprite;
   document.getElementById("sprite").alt = clean.name;
@@ -76,26 +27,6 @@ function renderCard(clean) {
   document.getElementById("officialArt").src = clean.officialArt;
   document.getElementById("officialArt").alt = "Official art of " + clean.name;
 }
-
-// type chooser
-
-const TYPES = [
-  "normal", "fire", "water", "electric", "grass", "ice",
-  "fighting", "poison", "ground", "flying", "psychic", "bug",
-  "rock", "ghost", "dragon", "dark", "steel", "fairy"
-];
-
-const PAGE_SIZE = 10;
-let allTypeResults = [];
-let displayedCount = 0;
-
-const typeButtonsDiv = document.getElementById("type-buttons");
-TYPES.forEach(function (type) {
-  const btn = document.createElement("button");
-  btn.textContent = type.charAt(0).toUpperCase() + type.slice(1);
-  btn.addEventListener("click", function () { loadType(type); });
-  typeButtonsDiv.appendChild(btn);
-});
 
 function loadType(type) {
   const searchError = document.getElementById("search-error");
@@ -108,7 +39,7 @@ function loadType(type) {
       displayedCount = PAGE_SIZE;
       document.getElementById("type-results-section").hidden = false;
       document.getElementById("type-results-title").textContent =
-        type.charAt(0).toUpperCase() + type.slice(1) + " type Pokémon";
+        capitalize(type) + " type Pokémon";
       renderTypeList();
     })
     .catch(() => {
@@ -118,21 +49,20 @@ function loadType(type) {
 }
 
 function renderTypeList() {
-  const query = searchInput.value.trim().toLowerCase();
+  const query = document.getElementById("pokemon-search").value.trim().toLowerCase();
   const filtered = query
     ? allTypeResults.filter((name) => name.includes(query))
     : allTypeResults;
 
   const list = document.getElementById("type-results");
-  const loadMoreBtn = document.getElementById("load-more");
-
   list.innerHTML = "";
+
   filtered.slice(0, displayedCount).forEach(function (name) {
     const li = document.createElement("li");
     const btn = document.createElement("button");
-    btn.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+    btn.textContent = capitalize(name);
     btn.addEventListener("click", function () {
-      const dex = nameToDex(name, pokemonList);
+      const dex = nameToDex(name, pokemon);
       if (!dex) return;
       queryPokeAPI(dex)
         .then((data) => processJSON(data))
@@ -146,10 +76,5 @@ function renderTypeList() {
     list.appendChild(li);
   });
 
-  loadMoreBtn.hidden = displayedCount >= filtered.length;
+  document.getElementById("load-more").hidden = displayedCount >= filtered.length;
 }
-
-document.getElementById("load-more").addEventListener("click", function () {
-  displayedCount += PAGE_SIZE;
-  renderTypeList();
-});
