@@ -176,6 +176,54 @@ body {
   color: #222;
 }
 
+.profile-display {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-display img {
+  border-radius: 50%;
+}
+
+#profile-editor {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  background: white;
+  padding: 15px;
+  border: 1px solid black;
+}
+
+.stats-container {
+  position: relative;
+  display: inline-block;
+}
+
+.stats-popup {
+  display: none;
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 540px;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 16px;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.stats-container:hover .stats-popup {
+  display: block;
+}
+
+#generationChart {
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+}
+
 /* Favorites Page */
 
 .favorites-controls {
@@ -216,25 +264,7 @@ body {
   padding: 2rem;
 }
 
-.profile-display {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
 
-.profile-display img {
-  border-radius: 50%;
-}
-
-#profile-editor {
-  position: absolute;
-  top: 100px;
-  right: 20px;
-  background: white;
-  padding: 15px;
-  border: 1px solid black;
-}
 
 /* Pokedex Page */
 
