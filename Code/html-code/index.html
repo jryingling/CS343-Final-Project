@@ -19,10 +19,25 @@
           <li><a href="pokedex.html">Pokédex</a></li>
         </ul>
       </nav>
+
+      <div class="profile-display" id="profileDisplay">
+        <span id="display-name">Trainer</span>
+        <img id="display-pic" src="../images/homepage/homepage-pikachu.png" alt="Profile" width="40">
+        <button id="edit-profile-btn">Edit</button>
+      </div>
     </div>
   </header>
 
   <main class="page-layout">
+    <section id="profile-editor" hidden>
+    <h2>Edit Profile</h2>
+
+    <input type="text" id="trainer-name" placeholder="Enter name">
+
+    <input type="file" id="profile-pic-input" accept="image/*">
+
+    <button id="save-profile">Save</button>
+  </section>
     <aside class="sidebar">
       <section class="search-section">
         <h2>Search</h2>
@@ -54,6 +69,9 @@
     </aside>
 
     <section class="main-content">
+
+      
+
       <p class="welcome-text">Welcome, Trainer.</p>
 
       <article class="pokemon-card">
