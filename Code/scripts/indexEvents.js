@@ -1,11 +1,10 @@
 // currently used in index.js ONLY
-
 let pokemon = [];
-
 fetch("../data/pokemon_dex_name.json")
   .then((response) => response.json())
   .then((data) => {
     pokemon = data;
+    getSuggestions();
   });
 
 const input = document.getElementById("pokemon-search");
@@ -20,7 +19,7 @@ input.addEventListener("input", function () {
     .slice(0, 10)
     .forEach((p) => {
       const option = document.createElement("option");
-      option.value = p.name.charAt(0).toUpperCase() + p.name.slice(1);
+      option.value = capitalize(p.name);
       datalist.appendChild(option);
     });
 });
@@ -40,3 +39,4 @@ document.querySelector(".search-form").addEventListener("submit", function (e) {
       searchError.hidden = false;
     });
 });
+

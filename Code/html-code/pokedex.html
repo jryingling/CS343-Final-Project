@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokédex - Pokémon Dashboard</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/pokedex.css">
 </head>
 <body>
 
@@ -21,44 +22,92 @@
         <li><a href="teams.html">Teams</a></li>
       </ul>
     </nav>
+
+      <div class="profile-display" id="profileDisplay">
+        <button id="edit-profile-btn">Edit</button>
+        <span id="display-name">Trainer</span>
+        <img id="display-pic" src="../images/homepage/homepage-pikachu.png" alt="Profile" width="40">
+
+        <div class="stats-container">
+          <button id="statsBtn">Stats</button>
+
+          <div class="stats-popup">
+            <h3>Trainer Stats</h3>
+
+            <p id="totalFavorites">Total Favorites: 0</p>
+            <p id="totalTeams">Total Teams: 0</p>
+
+            <canvas id="generationChart" width="500" height="300"></canvas>
+          </div>
+        </div>
+      </div>
      </div>
   </header>
 
+  <section id="profile-editor" hidden>
+    <h2>Edit Profile</h2>
+
+    <input type="text" id="trainer-name" placeholder="Enter name">
+
+    <input type="file" id="profile-pic-input" accept="image/*">
+
+    <button id="save-profile">Save</button>
+  </section>
+
   <main class="pokedex-layout">
 
-    <section class="pokedex-header">
-      <h2>Pokédex</h2>
-      <p>Browse and search for Pokémon.</p>
-    </section>
+    <div class="pokedex-top">
+      <section class="search-section">
+        <h2>Search</h2>
+        <form class="search-form" id="pokedex-search-form">
+          <label for="pokemon-search" class="sr-only">Search for Pokémon</label>
+          <input type="text" id="pokemon-search" name="pokemon-search" placeholder="Search for Pokémon..." list="pokemon-list">
+          <datalist id="pokemon-list"></datalist>
+          <button type="submit">GO</button>
+        </form>
+        <p id="search-error" class="search-error" hidden></p>
+      </section>
 
-    <section class="search-section">
-      <h2>Search</h2>
-      <form class="search-form" id="pokedex-search-form">
-        <label for="pokemon-search" class="sr-only">Search for Pokémon</label>
-        <input type="text" id="pokemon-search" name="pokemon-search" placeholder="Search for Pokémon..." list="pokemon-list">
-        <datalist id="pokemon-list"></datalist>
-        <button type="submit">GO</button>
-      </form>
-      <p id="search-error" class="search-error" hidden></p>
-    </section>
+      <section class="type-filter-section">
+        <h2>Browse by Type</h2>
+        <div id="type-buttons"></div>
+      </section>
 
-    <section class="pokedex-content" id="pokemon-detail">
-      <img id="sprite">
-      <p id="name"></p>
-      <p id="height"></p>
-      <p id="weight"></p>
-      <img id="officialArt">
-    </section>
+      <section id="type-results-section" hidden>
+        <h3 id="type-results-title"></h3>
+        <ul id="type-results"></ul>
+        <button id="load-more">Load More</button>
+      </section>
+    </div>
 
-    <section class="type-filter-section">
-      <h2>Browse by Type</h2>
-      <div id="type-buttons"></div>
-    </section>
-
-    <section id="type-results-section" hidden>
-      <h3 id="type-results-title"></h3>
-      <ul id="type-results"></ul>
-      <button id="load-more">Load More</button>
+    <section class="pokedex-content" id="pokemon-detail" hidden>
+      <div class="pokemon-main">
+        <div class="pokemon-images">
+          <img id="officialArt" class="official-art" alt="">
+          <img id="sprite" class="sprite" alt="">
+        </div>
+        <div class="pokemon-info">
+          <h2 id="name" class="pokemon-name"></h2>
+          <div id="type-badges" class="type-badges"></div>
+          <div class="pokemon-measurements">
+            <span id="height"></span>
+            <span id="weight"></span>
+          </div>
+          <div class="base-stats">
+            <p class="base-stats-label">Base Stats</p>
+            <div id="stat-bars"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pokemon-moves">
+        <h3>Moves</h3>
+        <div id="moves-grid"></div>
+        <div class="moves-pagination">
+          <button id="moves-prev">← Prev</button>
+          <span id="moves-page-label"></span>
+          <button id="moves-next">Next →</button>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -68,6 +117,9 @@
   </footer>
 
   <script src="../scripts/util.js"></script>
+  <script src="../scripts/nav.js"></script>
+  <script src="../scripts/trainer.js"></script>
   <script src="../scripts/pokedex.js"></script>
+  <script src="../scripts/pokedexEvents.js"></script>
 </body>
 </html>

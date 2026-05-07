@@ -1,0 +1,54 @@
+.teams-layout {
+  padding: 1.5rem 2rem;
+}
+
+.teams-header {
+  margin-bottom: 1.5rem;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.team-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.team-card h3 {
+  margin-bottom: 1rem;
+}
+
+.team-members {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.pokemon-slot {
+  background-color: #f0f0f0;
+  border: 1px dashed #aaa;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.team-action {
+  width: 100%;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.add-team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px dashed #aaa;
+}
